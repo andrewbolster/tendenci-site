@@ -15,7 +15,7 @@ Install virtualenv [http://www.virtualenv.org/](http://www.virtualenv.org/):
 
 You'll also need to have Git set up: [https://help.github.com/articles/set-up-git](https://help.github.com/articles/set-up-git).
 
-On Mac OSX 10.7 or higher: you will need xcode 4.4.1 (in app store) or the [https://github.com/kennethreitz/osx-gcc-installer/downloads](osx-gcc-installer pkg).
+On Mac OSX 10.7 or higher: you will need xcode 4.4.1 (in app store) or the [osx-gcc-installer package](https://github.com/kennethreitz/osx-gcc-installer/downloads).
 
 ## Setting up the database
 
