@@ -128,6 +128,13 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 STATIC_URL = '/static/'
 
+# Stock static media files and photos from the URL below
+# are licensed by Ed Schipul as Creative Commons Attribution
+# http://creativecommons.org/licenses/by/3.0/
+#
+# The full image set is available online at
+# http://tendenci.com/photos/set/3/
+
 STOCK_STATIC_URL = '//d15jim10qtjxjw.cloudfront.net/master-90/'
 
 TEMPLATE_CONTEXT_PROCESSORS += ('django.core.context_processors.static', )
