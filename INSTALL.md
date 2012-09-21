@@ -40,7 +40,7 @@ For more on installing PostgreSQL for Django check the docs at:
 
 Clone the repo, then travel to its directory. You can replace "your-site-name" with whatever name you like.
 
-    git clone git@github.com:schipul/tendenci-site.git your-site-name
+    git clone git@github.com:tendenci/tendenci-site.git your-site-name
     cd !$
 
 You should now be in `~/Dropbox/Code/your-site-name`, or whatever the path is to your project directory. Let's remove the .git so that your changes won't be tracked in the main tendenci-site repo.
@@ -128,7 +128,7 @@ You need to have a Heroku account: [http://heroku.com](http://heroku.com) and th
 
 For the instructions below, please replace `new-site-name` with the name of your site. The name can contain dashes or underscores, but not spaces.
 
-    git clone git@github.com:schipul/tendenci-site.git new-site-name
+    git clone git@github.com:tendenci/tendenci-site.git new-site-name
     cd new-site-name
     rm -rf .git
 
