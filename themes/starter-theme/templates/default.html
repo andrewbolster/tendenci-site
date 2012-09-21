@@ -1,0 +1,39 @@
+{% load theme_tags %}
+
+{% theme_extends 'base.html' %}
+
+{% block extra_head %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <link rel="shortcut icon" href="{{ THEME_URL }}media/images/favicon.ico">
+    <link rel="apple-touch-icon" href="{{ THEME_URL }}media/images/apple-touch-icon.png">
+    <link rel="stylesheet" href="{{ THEME_URL }}media/css/styles.css" type="text/css" media="screen" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+{% endblock extra_head %}
+
+{% block body_ids %}sub{% endblock body_ids %}
+{% block body_classes %}sub{% endblock body_classes %}
+
+{% block html_body %}
+<div id="wrapper">
+    {% theme_include "header.html" %}
+    <div class="container">
+        <section id="body-content">
+            <div class="content content-middle {% block content_classes %}{% endblock %}">
+                {% theme_include "base/messages.html" %}
+                {% block body %}{% endblock %}
+            </div><!-- /.content -->
+            
+            {% block sidebar %}
+            <div id="sidebar">
+                {% theme_include "sidebar.html" %}
+            </div><!-- /#sidebar -->
+            {% endblock %}
+        </section><!-- /#body-content -->
+    </div>
+    {% theme_include footer.html %}
+</div>
+{% endblock %}
