@@ -90,7 +90,7 @@ For example, to use Amazon's S3 service as a database backend, set the following
     AWS_ACCESS_KEY_ID='MY_ACCESS_KEY'
     AWS_SECRET_ACCESS_KEY='MY_SECRET_KEY'
     AWS_STORAGE_BUCKET_NAME='bucket_name'
-    S3_STORAGE_SITE_NAME='new-site-name'
+    AWS_LOCATION='new-site-name'
 
 
 ## Deploying
@@ -178,7 +178,7 @@ To configure S3, set the config options with the following command:
     heroku config:set AWS_ACCESS_KEY_ID='MY_ACCESS_KEY'
     heroku config:set AWS_SECRET_ACCESS_KEY='MY_SECRET_KEY'
     heroku config:set AWS_STORAGE_BUCKET_NAME='bucket_name'
-    heroku config:set S3_STORAGE_SITE_NAME='new-site-name'
+    heroku config:set AWS_LOCATION='new-site-name'
 
 Now, run the following command:
 
