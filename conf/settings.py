@@ -114,6 +114,18 @@ ORIGINAL_THEMES_DIR = THEMES_DIR
 LOCALE_PATHS = (os.path.join(PROJECT_ROOT, 'themes'),)
 
 
+# Remote Deploy URL Allows you to pass a URL into the environment
+# to trigger a remote action on another server.
+# This is used in the theme editor to when a theme file is updated.
+#
+# The Deploy hooks URL can be used with Heroku deployhooks addon
+# https://addons.heroku.com/deployhooks
+DEPLOYHOOKS_HTTP_URL = env('DEPLOYHOOKS_HTTP_URL', None)
+
+if DEPLOYHOOKS_HTTP_URL:
+    REMOTE_DEPLOY_EXTRA = env('REMOTE_DEPLOY_EXTRA', "action/")
+    REMOTE_DEPLOY_URL = DEPLOYHOOKS_HTTP_URL + REMOTE_DEPLOY_EXTRA
+
 # -------------------------------------- #
 # STATIC MEDIA
 # -------------------------------------- #
