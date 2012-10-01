@@ -48,27 +48,62 @@ INSTALLED_APPS += (
     'gunicorn',
 )
 
-
 # -------------------------------------- #
-# DATABASES
+# DATABASES - ASSUMES HEROKU FOR NOW
 # -------------------------------------- #
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'tendenci',
-#         'USER': '',
-#         'PASSWORD': '',
-#         'HOST': 'localhost',
-#         'PORT': '',
-#         'OPTIONS': {'autocommit': True},
-#     }
-# }
 
 DATABASES = env('DATABASES', {'default': dj_database_url.config(default='postgres://localhost')})
 
 DATABASES['default']['OPTIONS'] = {'autocommit': True}
 
+
+# -------------------------------------- #
+# DATABASES - EXAMPLE FROM DJANGO 1.4
+# -------------------------------------- #
+"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': '',                      # Or path to database file if using sqlite3.
+        'USER': '',                      # Not used with sqlite3.
+        'PASSWORD': '',                  # Not used with sqlite3.
+        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+    }
+}
+"""
+
+# --------------------------------------------- #
+# DATABASES - POSTGRES DIRECT CONNECT EXAMPLE
+# deploy script will create pg tables, but you need to
+# create the db and assign the user/pw first
+# --------------------------------------------- #
+"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'tendenci',
+        'USER': 'postgresDB',
+        'PASSWORD': 'YourSplediferousPasswordForYourDatabaseUserHere',
+        'HOST': '127.0.0.1',    # assumes local installation, hence loopback IP
+        'PORT': '5432',         # can be blank, or changed. Check docs for your host.
+        'OPTIONS': {'autocommit': True},
+    }
+}
+"""
+
+
+# Local time zone for this installation. Choices can be found here:
+# http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
+# although not all choices may be available on all operating systems.
+# In a Windows environment this must be set to your system time zone.
+TIME_ZONE = 'America/Chicago'
+
+# Language code for this installation. All choices can be found here:
+# http://www.i18nguy.com/unicode/language-identifiers.html
+LANGUAGE_CODE = 'en-us'
+
+SITE_ID = 1
 
 # -------------------------------------- #
 # DEBUG OPTIONS
@@ -151,7 +186,12 @@ STOCK_STATIC_URL = '//d15jim10qtjxjw.cloudfront.net/master-90/'
 
 TEMPLATE_CONTEXT_PROCESSORS += ('django.core.context_processors.static', )
 
-# s3 storeage
+# ----------------------------------------- #
+# s3 storeage example
+# set this up at https://console.aws.amazon.com/console/home
+# deploy script will ignore and use local if not configured. 
+# It's all good.
+# ----------------------------------------- #
 AWS_LOCATION = env('AWS_LOCATION', '')    # this is usually your site name
 AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID', '')
 AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY', '')
@@ -208,7 +248,7 @@ MERCHANT_TXN_KEY = env('MERCHANT_TXN_KEY', '')
 AUTHNET_MD5_HASH_VALUE = env('AUTHNET_MD5_HASH_VALUE', '')
 AUTHNET_POST_URL = env('AUTHNET_POST_URL', AUTHNET_POST_URL)
 
-# paypalpayflowlink
+# paypalpayflowlink (currently US only unfortunately per PayPal)
 PAYPAL_MERCHANT_LOGIN = env('PAYPAL_MERCHANT_LOGIN', '')
 PAYFLOWLINK_PARTNER = env('PAYFLOWLINK_PARTNER', 'PayPal')
 
@@ -276,7 +316,7 @@ CACHES['default']['JOHNNY_CACHE'] = True
 
 
 # -------------------------------------- #
-# MAIL
+# EMAIL NOTIFICATIONS (NOT NEWSLETTERS)
 # -------------------------------------- #
 
 EMAIL_USE_TLS = env('EMAIL_USE_TLS', True)
@@ -324,13 +364,24 @@ if USE_MAILGUN:
 DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', EMAIL_HOST_USER)
 SERVER_EMAIL = env('SERVER_EMAIL', DEFAULT_FROM_EMAIL)
 
+
 # -------------------------------------- #
-# CAMPAIGN MONITOR
+# EMAIL NEWSLETTERS USE THIRD PARTY OPTIONS
 # -------------------------------------- #
 
+# CAMPAIGN MONITOR
 CAMPAIGNMONITOR_URL = env('CAMPAIGNMONITOR_URL', '')
 CAMPAIGNMONITOR_API_KEY = env('CAMPAIGNMONITOR_API_KEY', '')
 CAMPAIGNMONITOR_API_CLIENT_ID = env('CAMPAIGNMONITOR_API_CLIENT_ID', '')
+
+# -------------------------------------- #
+# EMAIL NEWSLETTERS TODO
+#   MAIL CHIMP
+#   CAMPAIGN MONITOR
+#   SALESFORCE
+#   BLACKBAUD
+#   ETC...
+# -------------------------------------- #
 
 
 # THIS MUST BE AT THE END!
